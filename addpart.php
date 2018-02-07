@@ -10,7 +10,6 @@ $max = 2147483647;
     <meta charset="utf-8">
     <title>Manager's View - Add a Part</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel = "stylesheet" href="style.css">
 </head>
 <body>
   <h3> Adding a Part into the <?php echo $dept ?> Department </h3>
@@ -23,7 +22,7 @@ $max = 2147483647;
     <input type="text" name="minqty" id="minqty" required><br>
     <label for="price">Price (enter a number):</label>
     <input type="text" name="price" id="price" required><br>
-    <input type="submit" class="btn" value="Add Part" name="submit">
+    <input type="submit" value="Add Part" name="submit">
   </form>
   <?php
   if (isset($_POST['submit'])) {
@@ -46,7 +45,7 @@ $max = 2147483647;
       echo "Price is not an integer greater than 0.";
     }
     if(preg_match('/^\d+$/', $minqty) && preg_match('/^\d+$/', $qty) && filter_var($price, FILTER_VALIDATE_INT,array("options" => array("min_range"=>$min, "max_range"=>$max)))){
-      $conn=oci_connect('','','//dbserver.engr.scu.edu/db11g');
+      $conn=oci_connect('apalania','B29red1322','//dbserver.engr.scu.edu/db11g');
       if(!$conn) {
         print "<br> connection failed:";
         exit;
@@ -76,7 +75,7 @@ $max = 2147483647;
       oci_bind_by_name($query2, ':deptid', $deptid);
       $res = oci_execute($query2);
       if ($res){
-        echo '<br><br> <p class = "success">Data successfully inserted</p>';
+        echo '<br><br> <p style="color:green;font-size:20px">Data successfully inserted</p>';
         unset($_SESSION['DeptName']);
         session_destroy();
         header("refresh:2;url=manager.php");

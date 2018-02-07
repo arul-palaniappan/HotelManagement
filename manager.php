@@ -10,7 +10,6 @@ session_start();
     <link rel = "stylesheet" href="style.css">
 </head>
 <body>
-  <h1> Hotel Management - Manager's View </h1>
   <h3> What would you like to do? </h3>
    <form method="post">
     <br>
@@ -20,7 +19,7 @@ session_start();
     <select class = "form-control" name="DeptName" required>
       <option selected disabled> Select a Department </option>
       <?php
-      $conn=oci_connect('','', '//dbserver.engr.scu.edu/db11g');
+      $conn=oci_connect('apalania','B29red1322', '//dbserver.engr.scu.edu/db11g');
       if($conn) {
         $query = oci_parse($conn, "SELECT DeptName FROM Department");
         oci_execute($query);
@@ -45,7 +44,7 @@ session_start();
     if (($row = oci_fetch_array($mod, OCI_BOTH)) != false) {
       ?>
       <form method="post">
-        <p id = "low"> There are some parts that are low in quantity. </p>
+        <p> There are some parts that are low in quantity. </h3>
         <input type="submit" class = "btn" name="buypart" value="Buy a New Part">
       </form>
       <?php
@@ -59,7 +58,7 @@ session_start();
   <div id="container">
     <?php
       //connect to your database. Type in your username, password and the DB path
-      $conn=oci_connect('','', '//dbserver.engr.scu.edu/db11g');
+      $conn=oci_connect('apalania','B29red1322', '//dbserver.engr.scu.edu/db11g');
       if(!$conn) {
         print "<br> connection failed";
         exit;
@@ -84,8 +83,7 @@ session_start();
             break;
           }
         }
-        echo '<br><br> <p class="success"> Quantities of Random Parts are set to 0 </p>';
-        header("refresh:2;url=manager.php");
+        echo '<br><br> <p style="color:green;font-size:20px"> Quantities of Random Parts are set to 0 </p>';
       }
       else if(isset($_POST['addemployee']) && isset($_POST['DeptName'])){
         $_SESSION['DeptName'] = $_POST['DeptName'];

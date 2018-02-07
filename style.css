@@ -1,0 +1,20 @@
+body{
+  margin-left: 2% !important;
+}
+input[name = "randparts"]{
+  margin-bottom: 0.5%;
+}
+input[name = "viewemployees"]{
+  margin-left: 0.5%;
+}
+.form-control{
+  width: 15%;
+  margin-bottom: 1%;
+  display: inline;
+}
+#msg{
+  font-weight: bold;
+}
+table{
+  width: auto !important;
+}
