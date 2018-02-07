@@ -34,7 +34,7 @@ function prepareInput($inputData){
 }
 function checkId(){
 //connect to your database. Type in your username, password and the DB path
-$conn=oci_connect('sdesai2', 'kusabi', '//dbserver.engr.scu.edu/db11g');
+$conn=oci_connect('', '', '//dbserver.engr.scu.edu/db11g');
 	if(!$conn) {
 	     print "<br> connection failed:";
         exit;
@@ -67,10 +67,6 @@ $conn=oci_connect('sdesai2', 'kusabi', '//dbserver.engr.scu.edu/db11g');
 		echo '<br><br> <p style="color:green;font-size:20px">Your new customer id is</p>';
 		echo $id;
 		echo file_get_contents("initialLogin.php");
-//	else{
-//		$e = oci_error($query);
-  //      	echo $e['Id already exists or we fucked up'];
-//	}
   $query = oci_parse($conn, "Insert Into rewards(CustId, points, tier) values(:custid, 0, 0)");
   oci_bind_by_name($query, ':custid', $id);
   $res = oci_execute($query);
