@@ -1,5 +1,5 @@
 # Hotel Management
-SQL Tables created in tables.sql. Manager view test data is in insertion.sql and Client view test data is in Testingtables.sql
+SQL Tables created in tables.sql. Manager view test data is in insertion.sql.
 
 Manager View Link: http://students.engr.scu.edu/~apalania/manager.php
 
